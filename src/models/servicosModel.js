@@ -15,6 +15,10 @@ const servicoSchema = new Schema({
         type: Number,
         required: true
     },
+    eanDataImgStr: {
+        type: String,
+        required: true
+    }
 }, { timestamps: true });
 
 const Servico = mongoose.model("Serviço", servicoSchema);

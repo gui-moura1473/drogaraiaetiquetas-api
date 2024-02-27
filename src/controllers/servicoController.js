@@ -5,13 +5,19 @@ const servicoController = {
     create: async (req, res) => {
         try {
 
+            const eanImgDataReq = await fetch(`https://api.invertexto.com/v1/barcode?token=6755%7C5bfEFKnHcGmWE4HvsJyZCcctwtDzPZql&text=${req.body.ean}&type=code128&font=0&base64=true`);
+            const eanImgDataRes = await eanImgDataReq.json();
+
+            console.log(eanImgDataRes)
+
             const servico = {
                 name: req.body.name,
                 ean: req.body.ean,
-                price: req.body.price
+                price: req.body.price,
+                eanDataImgStr: eanImgDataRes.image
             }
 
-            if ((servico.name == null || servico.ean == null || servico.price == null)) {
+            if ((servico.name == null || servico.ean == null || servico.price == null || servico.eanDataImgStr == null)) {
                 res.status(400).json({ msg: "Serviço está incompleto para cadastrar!" });
                 return;
             }
