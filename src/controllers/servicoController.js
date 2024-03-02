@@ -8,8 +8,6 @@ const servicoController = {
             const eanImgDataReq = await fetch(`https://api.invertexto.com/v1/barcode?token=6755%7C5bfEFKnHcGmWE4HvsJyZCcctwtDzPZql&text=${req.body.ean}&type=code128&font=0&base64=true`);
             const eanImgDataRes = await eanImgDataReq.json();
 
-            console.log(eanImgDataRes)
-
             const servico = {
                 name: req.body.name,
                 ean: req.body.ean,
@@ -91,10 +89,14 @@ const servicoController = {
 
             const id = req.params.id;
 
+            const eanImgDataReq = await fetch(`https://api.invertexto.com/v1/barcode?token=6755%7C5bfEFKnHcGmWE4HvsJyZCcctwtDzPZql&text=${req.body.ean}&type=code128&font=0&base64=true`);
+            const eanImgDataRes = await eanImgDataReq.json();
+
             const servico = {
                 name: req.body.name,
                 ean: req.body.ean,
-                price: req.body.price
+                price: req.body.price,
+                eanDataImgStr: eanImgDataRes.image
             };
 
             const servicoAtualizado = await ServicoModel.findByIdAndUpdate(id, servico);
