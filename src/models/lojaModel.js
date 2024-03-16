@@ -15,9 +15,13 @@ const lojaSchema = new Schema({
         type: String,
         required: true
     },
-    phones: {
+    phone: {
         type: String,
-        required: true
+        required: false
+    },
+    celphone: {
+        type: String,
+        required: false
     },
     farmapop: {
         type: Boolean,

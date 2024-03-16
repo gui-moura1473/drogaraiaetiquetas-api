@@ -9,13 +9,14 @@ const lojaController = {
                 name: req.body.name,
                 filialNumber: req.body.filialNumber,
                 address: req.body.address,
-                phones: req.body.phones,
+                phone: req.body.phone,
+                celphone: req.body.celphone,
                 farmapop: req.body.farmapop
             }
 
             console.log(loja)
 
-            if ((loja.name == null || loja.filialNumber == null || loja.address == null || loja.phones == null || loja.farmapop == null)) {
+            if ((loja.name == null || loja.filialNumber == null || loja.address == null || loja.farmapop == null)) {
                 res.status(400).json({ msg: "Loja está incompleta pra cadastrar!" });
                 return;
             }
@@ -97,7 +98,8 @@ const lojaController = {
                 name: req.body.name,
                 filialNumber: req.body.filialNumber,
                 address: req.body.address,
-                phones: req.body.phones,
+                phone: req.body.phone,
+                celphone: req.body.celphone,
                 farmapop: req.body.farmapop
             }
 
