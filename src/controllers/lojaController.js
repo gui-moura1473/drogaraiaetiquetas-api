@@ -103,14 +103,6 @@ const lojaController = {
                 farmapop: req.body.farmapop
             }
 
-            if (loja.filialNumber) {
-                const lojaExistente = await LojaModel.findOne({ filialNumber: loja.filialNumber });
-                if (lojaExistente) {
-                    res.status(400).json({ msg: 'Já existe uma loja com esse número de filial!' });
-                    return;
-                }
-            }
-
             const lojaAtualizada = await LojaModel.findByIdAndUpdate(id, loja);
 
             if (!lojaAtualizada) {
